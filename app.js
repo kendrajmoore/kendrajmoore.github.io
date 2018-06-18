@@ -68,7 +68,7 @@ $(() => {
   deck1.shuffle();
   console.log(deck1.deck);
   deck1.deal();
-  console.log(deck1.deck);
+  console.log(deck1.deal());
   //console.log(value);
   //let cards = new Array();
 
