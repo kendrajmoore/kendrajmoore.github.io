@@ -12,63 +12,65 @@
 //if player over total -lost
 
 $(() => {
+  //set initial values
   let playGame = true;
   let playerScore = 0;
   let playerMoney = 100;
+  //make playing deck-52
+  class Deck {
+    constructor() {
+      this.deck = [];
 
-  let suits = ["Spades", "Clubes", "Hearts", "Diamonds"];
-  let value = [
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "10",
-    "Jack",
-    "Queen",
-    "King",
-    "Ace"
-  ];
+      const suits = ["Hearts", "Spades", "Clubs", "Diamonds"];
+      const values = [
+        "Ace",
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        "Jack",
+        "Queen",
+        "King"
+      ];
+
+      for (let suit in suits) {
+        for (let value in values) {
+          this.deck.push(`${values[value]} of ${suits[suit]}`);
+        }
+      }
+    }
+
+    shuffle() {
+      const { deck } = this;
+      let m = deck.length,
+        i;
+
+      while (m) {
+        i = Math.floor(Math.random() * m--);
+
+        [deck[m], deck[i]] = [deck[i], deck[m]];
+      }
+
+      return this;
+    }
+
+    deal() {
+      return this.deck.pop();
+    }
+  }
+
+  const deck1 = new Deck();
+  deck1.shuffle();
+  console.log(deck1.deck);
+  deck1.deal();
+  console.log(deck1.deck);
   //console.log(value);
   //let cards = new Array();
-
-  const makeCards = () => {
-    this.cards = new Array();
-    this.makeDeck = stackMakeDeck;
-    this.shuffle = stackShuffle;
-    this.deal = stackDeal;
-    this.draw = stackDraw;
-    this.addCard = stackAddCard;
-    this.combine = stackCombine;
-    this.cardCount = stackCardCount;
-  };
-
-  const generateDeck = () => {
-    //var ranks = new Array("A", "2", "3", "4", "5", "6", "7", "8", "9",
-    //"10", "J", "Q", "K");
-    //var suits = new Array("C", "D", "H", "S");
-    var i, j, k;
-    var m;
-
-    m = value.length * suits.length;
-
-    // Set array of cards.
-
-    this.cards = new Array(n * m);
-
-    // Fill the array with 'n' packs of cards.
-
-    for (i = 0; i < n; i++)
-      for (j = 0; j < suits.length; j++)
-        for (k = 0; k < value.length; k++)
-          this.cards[i * m + j * value.length + k] = new Card(
-            value[k],
-            suits[j]
-          );
-  };
-  console.log(generateDeck());
 
   if (playerMoney === 0) {
     console.log("you lose");
