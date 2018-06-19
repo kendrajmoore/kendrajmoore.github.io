@@ -14,29 +14,24 @@
 $(() => {
   //set initial values
   let playGame = true;
+  let playersHand = [];
   let playerScore = 0;
   let playerMoney = 100;
   //make playing deck-52
+
+  const suits = ["Hearts", "Spades", "Clubs", "Diamonds"];
+  const values = ["Ace", 2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen", "King"];
+
   class Deck {
     constructor() {
       this.deck = [];
+      this.suits = suits;
+      this.values = values;
 
-      const suits = ["Hearts", "Spades", "Clubs", "Diamonds"];
-      const values = [
-        "Ace",
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10,
-        ("Jack": 10),
-        ("Queen": 10),
-        ("King": 10)
-      ];
+      //let weight = parseInt(value[values]);
+      //if (value[values] == "J" || value[values] == "Q" || value[values] == "K")
+      //weight = 10;
+      //if (value[values] == "A") weight = 11;
 
       for (let suit in suits) {
         for (let value in values) {
@@ -62,15 +57,32 @@ $(() => {
     deal() {
       return this.deck.pop();
     }
+    total() {
+      //"2 of "
+    }
   }
 
   const deck1 = new Deck();
   deck1.shuffle();
   //console.log(deck1.deck);
   deck1.deal();
+  //console.log(this.value);
   //console.log(deck1.deal());
   //console.log(value);
   //let cards = new Array();
+
+  //var dealerhand = function(17, 21) {
+  //  card = Math.floor(Math.random()*(21 - 17 + 1)+17);
+  //return cardD; //should be return card;
+  //}
+
+  function valueHand() {
+    let value = 0;
+    for (element of hand) {
+      value += element.value;
+    }
+    console.log(value);
+  }
 
   if (playerMoney === 0) {
     console.log("you lose");
