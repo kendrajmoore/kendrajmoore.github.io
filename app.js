@@ -33,9 +33,9 @@ $(() => {
         8,
         9,
         10,
-        "Jack",
-        "Queen",
-        "King"
+        ("Jack": 10),
+        ("Queen": 10),
+        ("King": 10)
       ];
 
       for (let suit in suits) {
@@ -66,9 +66,9 @@ $(() => {
 
   const deck1 = new Deck();
   deck1.shuffle();
-  console.log(deck1.deck);
+  //console.log(deck1.deck);
   deck1.deal();
-  console.log(deck1.deal());
+  //console.log(deck1.deal());
   //console.log(value);
   //let cards = new Array();
 
@@ -97,10 +97,7 @@ $(() => {
 
   $closeBtn.on("click", closeModal);
 
-  //  const $firstCard = $("#first-card");
-  //$firstCard.on("click", flipCard);
-
-  //const flipCard = () => {
-  //$firstCard.css("display", "none");
-  //};
+  $("#playGame").on("click", () => {
+    console.log(deck1.deal());
+  });
 });
