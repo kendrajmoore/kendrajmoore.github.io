@@ -35,7 +35,8 @@ $(() => {
 
       for (let suit in suits) {
         for (let value in values) {
-          this.deck.push(`${values[value]} of ${suits[suit]}`);
+          this.deck.push(`${values[value]} ${suits[suit]}`);
+          //this.deck.push(`${suits[suit]}`);
         }
       }
     }
@@ -57,9 +58,11 @@ $(() => {
     deal() {
       return this.deck.pop();
     }
-    total() {
-      //"2 of "
-    }
+    //playerHandPus(){
+    //this.deck
+    //}//total() {
+    //"2 of "
+    //}
   }
 
   const deck1 = new Deck();
@@ -76,19 +79,11 @@ $(() => {
   //return cardD; //should be return card;
   //}
 
-  function valueHand() {
-    let value = 0;
-    for (element of hand) {
-      value += element.value;
-    }
-    console.log(value);
-  }
-
-  if (playerMoney === 0) {
-    console.log("you lose");
-  } else {
-    //displayModule();
-  }
+  //if (playerMoney === 0) {
+  //console.log("you lose");
+  //} else {
+  //displayModule();
+  //  }
   //Grabbing Elements
 
   const $openBtn = $("#openModal");
@@ -110,6 +105,19 @@ $(() => {
   $closeBtn.on("click", closeModal);
 
   $("#playGame").on("click", () => {
-    console.log(deck1.deal());
+    let dealtCard = deck1.deal();
+    let valueCard = dealtCard.splice(0, 1);
+    console.log(dealtCard);
+    //let valueCard = dealtCard.splice(0);
+    //console.log(valueCard);
+    //if (dealtCard == "Hearts") {
+    //console.log(dealtCard);
+    //} else if (dealtCard == "Spades") {
+    //console.log(dealtCard);
+    //} else if (dealtCard == "Diamonds") {
+    //console.log(dealtCard);
+    //} else {
+    //console.log(dealtCard);
+    //}
   });
 });

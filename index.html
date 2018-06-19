@@ -30,29 +30,31 @@
     </div>
   </div>
   <div class="container">
-    <div class="house">
-      <h2>House</h2>
-      <h2>Money</h2>
-      <h3 id="money">200</h3>
-      <!-- <button type="button" name="button">Start</button>
-    <button type="button" name="button">End</button> -->
+    <h2>House</h2>
+    <h2>Money</h2>
+    <label>Dealer: </label>
+    <label id="dealer-points" class="points"></label>
+    <div id="dealer-hand" class="hand">
     </div>
-    <div class="players-cards">
-      <h3>Dealers cards</h3>
-      <img id="first-card" src="./PNG/purple_back.png" alt="">
-      <!-- <img id="second-card" src="./PNG/purple_back.png" alt="">
-<img id="third-card" src="./PNG/purple_back.png" alt="">
-<img id="fourth-card" src="./PNG/purple_back.png" alt=""> -->
+    <label>Player: </label>
+    <label id="player-points" class="points"></label>
+    <br>
+    <label class="money">Bank: $</label>
+    <label id='player-money' class="money">500</label>
+    <div id="player-hand" class="hand">
     </div>
-    <div class="dealers-cards">
-      <h3>Players cards</h3>
-      <img id="first-card" src="./PNG/purple_back.png" alt="">
-      <!-- <img id="second-card" src="./PNG/purple_back.png" alt="">
-<img id="third-card" src="./PNG/purple_back.png" alt="">
-<img id="fourth-card" src="./PNG/purple_back.png" alt=""> -->
-    </div>
+  </div>
 
-    <div class="player">
+  <div class="player">
+    <div class="money">
+      <img src="./PNG/five.jpg" alt="">
+      <img src="./PNG/100.jpg" alt="">
+      <img src="" alt="">
+      <img src="" alt="">
+
+
+    </div>
+    <div class="dealer">
       <div class="money">
         <img src="./PNG/five.jpg" alt="">
         <img src="./PNG/100.jpg" alt="">
@@ -61,15 +63,6 @@
 
 
       </div>
-      <div class="dealer">
-        <div class="money">
-          <img src="./PNG/five.jpg" alt="">
-          <img src="./PNG/100.jpg" alt="">
-          <img src="" alt="">
-          <img src="" alt="">
-
-
-        </div>
       <div class="computer">
         <div class="money">
 
@@ -79,10 +72,16 @@
         </div>
 
       </div>
+      <div class="buttons">
+        <button id="deal-button">Deal</button>
+        <button id="hit-button">Hit</button>
+        <button id="stand-button">Stand</button>
+        <button id='bet-button'>Bet $100</button>
+      </div>
 
     </div>
 
 </body>
-<script src="app.js" charset="utf-8"></script>
+<script src="blackjack.js" charset="utf-8"></script>
 
 </html>
