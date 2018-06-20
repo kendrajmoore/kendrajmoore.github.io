@@ -1,27 +1,17 @@
-var deck = shuffle(newDeck());
-/* Test code [
-  { point: 9, suit: 'diamonds' },
-  { point: 1, suit: 'spades' },
-  { point: 5, suit: 'clubs' },
-  { point: 10, suit: 'hearts' },
-  { point: 2, suit: 'diamonds' },
-  { point: 6, suit: 'clubs' },
-  { point: 3, suit: 'hearts' },
-  { point: 9, suit: 'spades' }
-];*/
+let deck = shuffle(newDeck());
 
-var dealerHand = [];
-var playerHand = [];
+let dealerHand = [];
+let playerHand = [];
 
 //takes playerHand or dealerHand and element for appending HTML
-function dealCard(deck, hand, element, holecard) {
+const dealCard = (deck, hand, element, holecard) => {
   //var card;
   //takes card from deck
   card = deck.pop();
   //adds card to hand
   hand.push(card);
   //adds card to HTML
-  var cardHTML;
+  let cardHTML;
   if (holecard) {
     cardHTML =
       '<img class="card animated slideInLeft hole" src="images/back_of_card.jpeg" alt="' +
@@ -34,7 +24,7 @@ function dealCard(deck, hand, element, holecard) {
       '"/>';
   }
   $(element).append(cardHTML);
-}
+};
 
 //calculate points - takes hand (array of cards) and returns point value
 //of that hand
