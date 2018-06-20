@@ -14,7 +14,7 @@ const dealCard = (deck, hand, element, holecard) => {
   let cardHTML;
   if (holecard) {
     cardHTML =
-      '<img class="card animated slideInLeft hole" src="images/back_of_card.jpeg" alt="' +
+      '<img class="card animated slideInLeft hole" src="images/back_of_card.png" alt="' +
       getCardImageUrl(card) +
       '"/>';
   } else {
@@ -28,20 +28,16 @@ const dealCard = (deck, hand, element, holecard) => {
 
 //calculate points - takes hand (array of cards) and returns point value
 //of that hand
-function calculatePoints(hand) {
+const calculatePoints = hand => {
   //creates a new array
   hand.slice(0);
-  //compare cards to sort them
-  //if a > b ... num greater than 0
-  //if a < b ... num is less than 0
-  //if a = b ... num is equal to 0
-  function compare(card1, card2) {
+  const compare = (card1, card2) => {
     return card2.point - card1.point;
-  }
+  };
   hand.sort(compare);
-  var points = 0;
-  for (var i = 0; i < hand.length; i++) {
-    var card = hand[i];
+  let points = 0;
+  for (let i = 0; i < hand.length; i++) {
+    let card = hand[i];
     if (card.point > 10) {
       points = points + 10;
     } else if (card.point === 1) {
@@ -55,42 +51,42 @@ function calculatePoints(hand) {
     }
   }
   return points;
-}
+};
 //calculate the Points using calculatePoints for both the dealer
 //and player and will update the display with the Points
-function displayPlayerPoints() {
-  var playerPoints = calculatePoints(playerHand);
+const displayPlayerPoints = () => {
+  let playerPoints = calculatePoints(playerHand);
   $("#player-points").text(playerPoints);
-}
-function displayDealerPoints() {
-  var dealerPoints = calculatePoints(dealerHand);
+};
+const displayDealerPoints = () => {
+  const dealerPoints = calculatePoints(dealerHand);
   $("#dealer-points").text(dealerPoints);
-}
+};
 //calculatePoints to get points for both dealer and player and display
 //message when someone busts. Returns true if there was a bust
-function checkForBusts() {
-  var playerPoints = calculatePoints(playerHand);
+const checkForBusts = () => {
+  let playerPoints = calculatePoints(playerHand);
   if (playerPoints > 21) {
     $("#messages").text("You busted. Better luck next time!");
     $(".card.hole").attr("src", getCardImageUrl(dealerHand[0]));
-    var currentPlayerMoney = Number($("#player-money").text());
-    var totalBet = 500 - currentPlayerMoney;
+    let currentPlayerMoney = Number($("#player-money").text());
+    let totalBet = 500 - currentPlayerMoney;
     $("#player-money").text(currentPlayerMoney - totalBet);
     return true;
   }
-  var dealerPoints = calculatePoints(dealerHand);
+  let dealerPoints = calculatePoints(dealerHand);
   if (dealerPoints > 21) {
     $("#messages").text("Dealer busted. You won!");
     $(".card.hole").attr("src", getCardImageUrl(dealerHand[0]));
-    var currentPlayerMoney = Number($("#player-money").text());
-    var totalBet = 500 - currentPlayerMoney;
+    let currentPlayerMoney = Number($("#player-money").text());
+    let totalBet = 500 - currentPlayerMoney;
     $("#player-money").text(currentPlayerMoney + totalBet + totalBet);
     return true;
   }
   return false;
-}
+};
 
-function resetGame() {
+const resetGame = () => {
   deck = shuffle(newDeck());
   dealerHand = [];
   playerHand = [];
@@ -101,10 +97,10 @@ function resetGame() {
   $("#dealer-hand").html("");
   $("#hit-button").prop("disabled", false);
   $("#stand-button").prop("disabled", false);
-}
+};
 //function that diplays dynamtically the card img for the card
-function getCardImageUrl(card) {
-  var cardName;
+const getCardImageUrl = card => {
+  let cardName;
   if (card.point === 1) {
     cardName = "ace";
   } else if (card.point === 11) {
@@ -118,16 +114,16 @@ function getCardImageUrl(card) {
   }
   var result = "images/" + cardName + "_of_" + card.suit + ".png";
   return result;
-}
+};
 
 //new deck which creates a deck of the 52 standard poker cards
 //as an array of card objects
 function newDeck() {
-  var deck = [];
-  var suits = ["spades", "hearts", "clubs", "diamonds"];
-  for (var point = 1; point <= 13; point++) {
-    for (var i = 0; i < suits.length; i++) {
-      var suit = suits[i];
+  let deck = [];
+  let suits = ["spades", "hearts", "clubs", "diamonds"];
+  for (let point = 1; point <= 13; point++) {
+    for (let i = 0; i < suits.length; i++) {
+      let suit = suits[i];
       deck.push({ point: point, suit: suit });
     }
   }
@@ -146,9 +142,9 @@ function shuffle(cards) {
   return newCards;
 }
 
-$(function() {
-  $("#deal-button").click(function() {
-    var card;
+$(() => {
+  $("#deal-button").click(() => {
+    let card;
     resetGame();
     dealCard(deck, playerHand, "#player-hand");
     dealCard(deck, dealerHand, "#dealer-hand", true);
@@ -158,14 +154,13 @@ $(function() {
     checkForBusts();
   });
 
-  //hit deals one card
-  $("#hit-button").click(function() {
+  $("#hit-button").click(() => {
     dealCard(deck, playerHand, "#player-hand");
     displayPlayerPoints();
     checkForBusts();
   });
-  //will continue to deal to the dealer until hits 17
-  $("#stand-button").click(function() {
+
+  $("#stand-button").click(() => {
     var dealerPoints = calculatePoints(dealerHand);
     while (dealerPoints < 17) {
       dealCard(deck, dealerHand, "#dealer-hand");
@@ -177,15 +172,15 @@ $(function() {
     if (!checkForBusts()) {
       displayDealerPoints();
       //determine winner
-      var playerPoints = calculatePoints(playerHand);
-      var dealerPoints = calculatePoints(dealerHand);
+      let playerPoints = calculatePoints(playerHand);
+      let dealerPoints = calculatePoints(dealerHand);
       if (playerPoints > dealerPoints) {
         $("#messages").text("YOU WON!");
         $("#hit-button").prop("disabled", true);
         $("#stand-button").prop("disabled", true);
-        //to give player table money
-        var currentPlayerMoney = Number($("#player-money").text());
-        var totalBet = 500 - currentPlayerMoney;
+
+        let currentPlayerMoney = Number($("#player-money").text());
+        let totalBet = 500 - currentPlayerMoney;
         $("#player-money").text(currentPlayerMoney + totalBet + totalBet);
       } else if (playerPoints === dealerPoints) {
         $("#messages").text("Push");
@@ -199,18 +194,18 @@ $(function() {
     }
   });
 
-  $("#bet-button").click(function() {
-    var currentPlayerMoney = Number($("#player-money").text());
-    var total = currentPlayerMoney - 100;
+  $("#bet-button").click(() => {
+    let currentPlayerMoney = Number($("#player-money").text());
+    let total = currentPlayerMoney - 100;
     $("#player-money").text(total);
-    var totalBet = 500 - Number($("#player-money").text());
+    let totalBet = 500 - Number($("#player-money").text());
     if (currentPlayerMoney <= 0) {
       alert("You are out of Money!! No, worries here is more");
       $("#player-money").text("500");
     }
   });
 
-  //Grabbing Elements
+  //Add Modal
 
   const $openBtn = $("#openModal");
   const $modal = $("#modal");
