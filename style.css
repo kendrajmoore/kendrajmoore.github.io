@@ -1,26 +1,16 @@
 body {
-  font-family: "Helvetica Neue", sans-serif;
-}
-
-* {
-  box-sizing: border-box;
-  color: gray;
+  font-family: "Arial";
+  background-color: green;
 }
 
 #table {
   padding: 80px 50px;
-  border: 3px solid black;
-  border-radius: 40px;
-  background: linear-gradient(#9fe558 0%, #8edb3d 40%, #67c200 100%) no-repeat
-    no-repeat;
-  box-shadow: 0 1px 3px 3px;
 }
 
 .hand {
   padding: 10px;
-  border-radius: 3px;
+  border: 3px solid black;
   height: 100px;
-  background: #9fe558;
   margin-bottom: 10px;
 }
 
@@ -82,12 +72,13 @@ body {
   z-index: 1;
   overflow: scroll;
   display: none;
+  overflow-y: scroll;
 }
 
 #modal-textbox {
-  background-color: white;
-  color: black;
-  height: 350px;
+  background-color: black;
+  color: white;
+  height: 600px;
   width: 550px;
   border-radius: 2px;
   margin: 150px auto;
