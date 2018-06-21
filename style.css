@@ -10,8 +10,8 @@ body {
 .hand {
   padding: 10px;
   border: 3px solid black;
-  height: 100px;
-  margin-bottom: 10px;
+  height: 200px;
+  padding: 2em 2em 2em 2em;
 }
 
 .hand label {
