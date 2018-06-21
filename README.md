@@ -7,3 +7,5 @@ This game uses a single deck
 To install just clone the repo
 
 #### Play the game here - https://kendrajmoore.github.io./
+
+![Alt Text](https://imgflip.com/gif/2cn4jo)
