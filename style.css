@@ -1,6 +1,18 @@
 body {
   font-family: "Arial";
   background-color: green;
+  text-align: center;
+}
+img {
+  height: 10px;
+}
+
+#dealer-hand {
+  margin: 2em 0 2em 0;
+}
+
+#player-hand {
+  margin: 2em 0 2em 0;
 }
 
 #table {
@@ -8,8 +20,6 @@ body {
 }
 
 .hand {
-  padding: 10px;
-  border: 3px solid black;
   height: 200px;
   padding: 2em 2em 2em 2em;
 }
@@ -21,12 +31,10 @@ body {
 
 .card {
   float: left;
-  background: white;
-  border-radius: 5px;
-  border: 1px solid black;
-  width: 60px;
-  height: 80px;
-  margin: 0 5px;
+  padding-left: 10em;
+  width: 100px;
+  height: 120px;
+  /* margin: 0 5px; */
 }
 
 #messages {
@@ -38,12 +46,11 @@ body {
 
 .buttons {
   text-align: center;
+  margin-top: 2em;
 }
 
 .buttons button {
   border: 1px solid #666;
-  border-radius: 5px;
-  background: linear-gradient(#eee, #ccc);
   font-size: 1em;
   padding: 5px 10px;
 }
