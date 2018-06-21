@@ -186,7 +186,7 @@ $(() => {
     let total = currentPlayerMoney - 100;
     $("#player-money").text(total);
     let totalBet = 200 - Number($("#player-money").text());
-    if (currentPlayerMoney <= 0) {
+    if ((currentPlayerMoney = 0)) {
       alert("You lost but here is more money");
       $("#player-money").text("200");
     }
