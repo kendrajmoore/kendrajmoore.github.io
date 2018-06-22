@@ -56,7 +56,7 @@ const displayDealerPoints = () => {
 const checkScore = () => {
   let playerPoints = calculatePoints(playerHand);
   if (playerPoints > 21) {
-    $("#messages").text("You busted. Better luck next time!");
+    $("#messages").text("You busted. Money still on table!");
     $(".card.hole").attr("src", getCardImageUrl(dealerHand[0]));
     let currentPlayerMoney = Number($("#player-money").text());
     let totalBet = 200 - currentPlayerMoney;
@@ -65,7 +65,7 @@ const checkScore = () => {
   }
   let dealerPoints = calculatePoints(dealerHand);
   if (dealerPoints > 21) {
-    $("#messages").text("Dealer busted. You won!");
+    $("#messages").text("You won!");
     $(".card.hole").attr("src", getCardImageUrl(dealerHand[0]));
     let currentPlayerMoney = Number($("#player-money").text());
     let totalBet = 200 - currentPlayerMoney;
@@ -174,7 +174,7 @@ $(() => {
         $("#hit-button").prop("disabled", true);
         $("#stand-button").prop("disabled", true);
       } else {
-        $("#messages").text("You lose but it is ok!");
+        $("#messages").text("You lose!");
         $("#hit-button").prop("disabled", true);
         $("#stand-button").prop("disabled", true);
       }
@@ -186,7 +186,7 @@ $(() => {
     let total = currentPlayerMoney - 100;
     $("#player-money").text(total);
     let totalBet = 200 - Number($("#player-money").text());
-    if ((currentPlayerMoney = 0)) {
+    if (currentPlayerMoney <= 0) {
       alert("You lost but here is more money");
       $("#player-money").text("200");
     }
