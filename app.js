@@ -174,7 +174,7 @@ $(() => {
         $("#hit-button").prop("disabled", true);
         $("#stand-button").prop("disabled", true);
       } else {
-        $("#messages").text("You lose!");
+        $("#messages").text("You lose but it is ok!");
         $("#hit-button").prop("disabled", true);
         $("#stand-button").prop("disabled", true);
       }
@@ -187,7 +187,7 @@ $(() => {
     $("#player-money").text(total);
     let totalBet = 200 - Number($("#player-money").text());
     if (currentPlayerMoney <= 0) {
-      alert("You lost");
+      alert("You lost but it is ok");
       $("#player-money").text("200");
     }
   });
