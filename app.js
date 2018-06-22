@@ -56,7 +56,7 @@ const displayDealerPoints = () => {
 const checkScore = () => {
   let playerPoints = calculatePoints(playerHand);
   if (playerPoints > 21) {
-    $("#messages").text("You busted. Money still on table!");
+    $("#messages").text("You lose!");
     $(".card.hole").attr("src", getCardImageUrl(dealerHand[0]));
     let currentPlayerMoney = Number($("#player-money").text());
     let totalBet = 200 - currentPlayerMoney;
@@ -187,7 +187,7 @@ $(() => {
     $("#player-money").text(total);
     let totalBet = 200 - Number($("#player-money").text());
     if (currentPlayerMoney <= 0) {
-      alert("You lost but here is more money");
+      alert("You lost");
       $("#player-money").text("200");
     }
   });
